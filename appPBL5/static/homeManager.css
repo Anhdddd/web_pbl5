@@ -38,6 +38,29 @@ main .container-content {
     height: 100%;
     background-color: #eceef1;
 }
+main .container-search {
+  padding: 10px 20px;
+  width: 35%;
+}
+main .container-search .input-search {
+  width: 65%;
+  height: 35px;
+  border-radius: 3px;
+  border: 0 solid #e2e8f0;
+  padding: 0 10px;
+  margin: 10px 10px 5px 0px;
+} 
+main .container-search .button-search {
+  width: 25%;
+  height: 35px;
+  border-radius: 3px;
+  border: 0 solid #e2e8f0;
+  background-color: #3163a9;
+  color: #fff;
+  cursor: pointer;
+}
+
+
 
 main .container-content table {
   border-collapse: collapse;
