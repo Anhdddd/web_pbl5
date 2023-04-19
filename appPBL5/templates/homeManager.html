@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block link_css %}
-<link rel="stylesheet" href="{% static 'manager_style/homeManager.css' %}">
+<link rel="stylesheet" href="{% static 'homeManager.css' %}">
 {% endblock %}
 
 
@@ -19,6 +19,10 @@
       <div class="menu-item"><a href="/parking_history.html">Xem lịch sử gửi xe</a></div>
       </div>
     <div class="container-content">
+      <div class="container-search">
+        <input type="text" id="search" name="search" class="input-search" placeholder="Nhập thông tin cần tìm">
+        <input type="button" id="button" name="button" class="button-search" value="Tìm kiếm">
+      </div>
         <table>
             <thead>
               <tr>
