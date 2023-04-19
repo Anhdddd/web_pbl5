@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ĐĂNG NHẬP{% endblock %}
+{% block link_css %}<link rel="stylesheet" href="{% static 'login.css' %}">{% endblock %}
+{% block content %}
+<main>
+    <h3>ĐĂNG NHẬP</h3>
+    <form action="">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <a class="button" href="{% url 'manager' %}">Login</a>
+    </form>
+</main>
+{% endblock %}

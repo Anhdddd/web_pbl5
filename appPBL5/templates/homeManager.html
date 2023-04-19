@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Trang quản lý
+{% endblock %}
+
+{% block link_css %}
+<link rel="stylesheet" href="{% static 'manager_style/homeManager.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="menu">
+      <div class="menu-item"><a href="/manager">Quản lý tài khoản</a></div>
+      <div class="menu-item"><a href="admin.html">Thêm tài khoản</a></div>
+      <div class="menu-item"><a href="/parking_history.html">Xem lịch sử gửi xe</a></div>
+      </div>
+    <div class="container-content">
+        <table>
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tên người dùng</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Biển số xe</th>
+                <th>Chi tiết</th>
+                <th>Chặn</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in user_data %}
+              <tr>
+                <td>{{ forloop.counter}}</td>
+                <td>{{ user.name}}</td>
+                <td>{{ user.phone}}</td>
+                <td>{{ user.address}}</td>
+                <!-- <td>{% for lp in user_data.license_plates %}{{ lp }}{% if not forloop.last %}, {% endif %}{% endfor %}</td> -->
+                <td><a href="/details/{{ user.id }}"><img src="{% static 'image/details.png' %}" alt=""></a></td>
+                <td><a href=""><img src="{% static 'image/icon-info.png' %}" alt=""></a></td>
+                <td><a href=""><img src="{% static 'image/icon-block.png' %}" alt=""></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</main>
+{% endblock %}
