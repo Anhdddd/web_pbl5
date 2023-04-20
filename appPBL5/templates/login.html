@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ĐĂNG NHẬP{% endblock %}
+{% block link_css %}<link rel="stylesheet" href="{% static 'login.css' %}">{% endblock %}
+{% block content %}
+<main>
+    <h3>ĐĂNG NHẬP</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+</main>
+{% endblock %}

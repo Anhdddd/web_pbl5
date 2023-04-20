@@ -1,0 +1,113 @@
+main {
+  height: 87%;
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.908);
+  border: 0 solid #e2e8f0;
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  margin-right: 3px;
+  box-shadow: 2px 0px 1px rgba(53, 52, 54, 0.3);
+}
+
+.menu-item {
+  padding: 15px 16px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.menu-item a {
+  font-weight: 1000;
+  text-decoration: none;
+  color: #000;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+  .menu-item:hover {
+      background-color: #e0e0e0;
+  }
+
+main .container-content {
+  overflow: auto;
+  width: 90%;
+  height: 100%;
+  background-color: #eceef1;
+}
+
+main .container-content table {
+border-collapse: collapse;
+width: 98%;
+}
+main .container-content table th {
+border: 1px solid black;
+padding: 5px 20px;
+color: #f1f1f1;
+background-color: #5a58a3;
+}
+main .container-content table td {
+border: 1px solid black;
+padding: 5px 10px;
+}
+main .container-content table td:nth-last-child(3),
+main .container-content table td:nth-last-child(2),
+main .container-content table td:last-child {
+text-align: center;
+}
+main .container-content table tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+main .container-content table a img {
+width: 20px;
+height: 20px;
+}
+
+
+/* Tùy chỉnh thanh cuộn trên Chrome/Safari */
+main .container-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+main .container-content::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+main .container-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}

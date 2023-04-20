@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Trang quản lý
+{% endblock %}
+
+{% block link_css %}
+<link rel="stylesheet" href="{% static 'manager_style/homeManager.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="menu">
+      <div class="menu-item"><a href="/manager">Quản lý tài khoản</a></div>
+      <div class="menu-item"><a href="/createuser">Thêm tài khoản</a></div>
+      <div class="menu-item"><a href="/parking_history">Xem lịch sử gửi xe</a></div>
+      </div>
+    <div class="container-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>License Plate</th>
+            <th>Check-in Time</th>
+            <th>Check-out Time</th>
+            <th>Price</th>
+            <th>Is Paid</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            {% for plate in user.license_plates.all %}
+              {% for history in plate.parking_history_set.all %}
+                <tr>
+                  <td>{{ user.name }}</td>
+                  <td>{{ plate.number_plate }}</td>
+                  <td>{{ history.check_in_time }}</td>
+                  <td>{{ history.check_out_time }}</td>
+                  <td>{{ history.price }}</td>
+                  <td>{{ history.isPaid }}</td>
+                </tr>
+              {% endfor %}
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</main>
+{% endblock %}
+
+
