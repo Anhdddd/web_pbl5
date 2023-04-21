@@ -32,8 +32,6 @@ main form input {
     margin: 10px 0;
 }
 main form .button {
-    width: 80%;
-    height: 20px;
     border-radius: 5px;
     border: 0 solid #e2e8f0;
     background-color: #3163a9;

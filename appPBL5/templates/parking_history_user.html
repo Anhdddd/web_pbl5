@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block link_css %}<link rel="stylesheet" href="{% static 'parking_history_user.css' %}">
+{% endblock %}
+{% block title %}
+Thông tin cá nhân
+{% endblock %}
+
+
+{% block content %}
+<nav>
+    <ul>
+      <li><a href="{% url 'user' %}">Trang chủ</a></li>
+      <li><a href="{% url 'parking_history_user' %}">Lịch sử gửi xe</a></li>
+      <li><a href="{% url 'logout' %}">Đăng xuất</a></li>
+    </ul>
+</nav>
+
+<main>
+    <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Thời gian vào</th>
+            <th>Thời gian ra</th>
+            <th>Chi phí</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for parking_history in list_parking_history %}
+          <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>{{ parking_history.check_in_time}}</td>
+            <td>{{ parking_history.check_out_time}}</td>
+            <td>{{ parking_history.price}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
