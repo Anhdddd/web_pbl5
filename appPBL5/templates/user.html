@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block link_css %}<link rel="stylesheet" href="{% static 'user.css' %}">
+{% endblock %}
+{% block title %}
+Thông tin cá nhân
+{% endblock %}
+
+
+{% block content %}
+<nav>
+    <ul>
+      <li><a href="{% url 'user' %}">Trang chủ</a></li>
+      <li><a href="{% url 'parking_history_user' %}">Lịch sử gửi xe</a></li>
+      <li><a href="{% url 'logout' %}">Đăng xuất</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="container-content">
+        <div class="container-img">
+            <img src="{% static 'image/img_user.png' %}" alt="">
+        </div>
+        <div class="container-form-infor">
+            <form class="profile" method="post" action="{% url 'update_user' %}">
+                {% csrf_token %}
+                <label for="name">Họ và tên:</label>
+                <input type="text" name="name" id="name" value="{{ user.name }}" readonly>
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" name="phone" id="phone" value="{{user.phone}}">
+                <label for="address">Địa chỉ:</label>
+                <input type="text" name="address" id="address" value="{{user.address}}">
+                <p>{{ notification }}</p>
+                <input type="submit" value="Cập nhật thông tin">
+            </form>
+            <div class="content-license-plate">
+                <table>
+                    <thead>
+                        <tr>
+                          <th>STT</th>
+                          <th>Biển số xe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_license_plate in user_license_plates %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ user_license_plate.number_plate }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <div class="container-form-Account">
+            <label for="account">Tên tài khoản:</label>
+            <input type="text" name="account" id="account" value="{{user.phone}}">
+            <input type="button" value="Thay đổi mật khẩu">
+        </div> -->
+    </div>
+{% endblock %}
