@@ -1,7 +1,7 @@
 .container {
 max-width: 500px;
 margin: 0 auto;
-padding: 20px;
+padding: 30px;
 border: 1px solid #ccc;
 border-radius: 5px;
 }
@@ -43,6 +43,6 @@ cursor: pointer;
 transition: all 0.3s ease;
 }
 
-
-
-  
+.error_info {
+    color: red;
+}

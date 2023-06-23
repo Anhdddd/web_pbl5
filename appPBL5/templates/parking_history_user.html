@@ -14,6 +14,7 @@ Thông tin cá nhân
     <ul>
       <li><a href="{% url 'user' %}">Trang chủ</a></li>
       <li><a href="{% url 'parking_history_user' %}">Lịch sử gửi xe</a></li>
+      <li style="cursor: pointer;"><a onclick="openQR()">Quét QR</a></li>
       <li><a href="{% url 'logout' %}">Đăng xuất</a></li>
     </ul>
 </nav>
@@ -23,21 +24,43 @@ Thông tin cá nhân
         <thead>
           <tr>
             <th>STT</th>
+            <th>Biển số xe</th>
             <th>Thời gian vào</th>
             <th>Thời gian ra</th>
-            <th>Chi phí</th>
+            <!-- <th>Chi phí</th> -->
           </tr>
         </thead>
         <tbody>
           {% for parking_history in list_parking_history %}
           <tr>
             <td>{{ forloop.counter}}</td>
-            <td>{{ parking_history.check_in_time}}</td>
-            <td>{{ parking_history.check_out_time}}</td>
-            <td>{{ parking_history.price}}</td>
+            <td>{{ parking_history.license_plate.number_plate }}</td>
+            <td>{{ parking_history.check_in_time |date:"d/m/Y H:i:s"}}</td>
+            <td>{{ parking_history.check_out_time |date:"d/m/Y H:i:s"}}</td>
+            <!-- <td>{{ parking_history.price}}</td> -->
           </tr>
           {% endfor %}
         </tbody>
       </table>
-    </div>
+</main>
+
+<div id="overlay" style="display: none;">
+  <form id="form-add">
+      <i class="fa fa-times close-button" style="font-size: 25px; cursor: pointer;" onclick="closeForm('overlay')"></i>
+      {% load qr_code %}
+      {% qr_from_text code_qr size='l' image_format='svg' %}
+  </form>   
+</div>
+
+<script>
+  function closeForm(id)
+  {
+      document.getElementById(id).style.display = 'none'
+  }
+  function openQR()
+  {
+      event.preventDefault();
+      document.getElementById('overlay').style.display = 'block';
+  }
+</script>
 {% endblock %}

@@ -44,3 +44,10 @@ main form .button {
     padding: 10px 0;
     text-decoration: none;
 }
+
+@media (max-width: 450px) {
+    main {
+        width: 350px;
+        height: 350px;
+    }
+  }

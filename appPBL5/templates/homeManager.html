@@ -18,12 +18,13 @@
       <div class="menu-item"><a href="/createuser">Thêm tài khoản</a></div>
       <div class="menu-item"><a href="/parking_history">Xem lịch sử gửi xe</a></div>
       <div class="menu-item"><a href="{% url 'logout' %}">Đăng xuất</a></div>
-      </div>
+    </div>
     <div class="container-content">
-      <div class="container-search">
+      <form  class="container-search" method="post" action="{% url 'search_user' %}">
+        {% csrf_token %}
         <input type="text" id="search" name="search" class="input-search" placeholder="Nhập thông tin cần tìm">
-        <input type="button" id="button" name="button" class="button-search" value="Tìm kiếm">
-      </div>
+        <input type="submit" class="button-search" value="Tìm kiếm">
+      </form>
         <table>
             <thead>
               <tr>

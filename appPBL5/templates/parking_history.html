@@ -20,31 +20,31 @@
       <div class="menu-item"><a href="{% url 'logout' %}">Đăng xuất</a></div>
     </div>
     <div class="container-content">
+      <div class="container-search">
+        <input type="text" id="search" name="search" class="input-search" placeholder="Nhập biển số xe">
+        <input type="button" id="button" name="button" class="button-search" value="Tìm kiếm">
+        <!-- <label for="check-in-time">Thời gian vào:</label>
+        <input type="date" id="check-in-time" name="check-in-time">
+        <label for="check-out-time">Thời gian ra:</label>
+        <input type="date" id="check-out-time" name="check-out-time"> -->
+      </div>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>License Plate</th>
-            <th>Check-in Time</th>
-            <th>Check-out Time</th>
-            <th>Price</th>
-            <th>Is Paid</th>
+            <th>Họ và tên</th>
+            <th>Biển số xe</th>
+            <th>Thời gian vào</th>
+            <th>Thời gian ra</th>
           </tr>
         </thead>
         <tbody>
-          {% for user in users %}
-            {% for plate in user.license_plates.all %}
-              {% for history in plate.parking_history_set.all %}
-                <tr>
-                  <td>{{ user.name }}</td>
-                  <td>{{ plate.number_plate }}</td>
-                  <td>{{ history.check_in_time }}</td>
-                  <td>{{ history.check_out_time }}</td>
-                  <td>{{ history.price }}</td>
-                  <td>{{ history.isPaid }}</td>
-                </tr>
-              {% endfor %}
-            {% endfor %}
+          {% for history in parking_histories %}
+            <tr>
+              <td>{{ history.license_plate__user__name }}</td>
+              <td>{{ history.license_plate__number_plate }}</td>
+              <td>{{ history.check_in_time|date:"d/m/Y H:i:s"  }}</td>
+              <td>{{ history.check_out_time|date:"d/m/Y H:i:s"  }}</td>
+            </tr>
           {% endfor %}
         </tbody>
       </table>
