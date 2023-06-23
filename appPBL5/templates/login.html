@@ -6,10 +6,11 @@
 {% block content %}
 <main>
     <h3>ĐĂNG NHẬP</h3>
-    <form action="">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <a class="button" href="{% url 'manager' %}">Login</a>
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username" required>
+        <input type="password" name="password" placeholder="password" required>
+        <input type="submit" class="button" value="Login">
     </form>
 </main>
 {% endblock %}
