@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Danh sách biển số xe
+{% endblock %}
+
+{% block link_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="menu">
+      <div class="menu-item"><a href="/manager">Quản lý tài khoản</a></div>
+      <div class="menu-item"><a href="/createuser">Thêm tài khoản</a></div>
+      <div class="menu-item"><a href="/parking_history">Xem lịch sử gửi xe</a></div>
+      <div class="menu-item"><a href="{% url 'logout' %}">Đăng xuất</a></div>
+    </div>
+    <div class="container-content">
+        <h3>Danh sách biển số xe của {{name_user.name}}</h3>
+        <input type="hidden" name="id" id="id" value="{{name_user.id}}">
+        <button onclick="openForm('overlay')">Thêm biển số</button>
+        <table>
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Biển số xe</th>
+                <th>Chặn</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for license_plate in list_License_Plate_of_user %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ license_plate.number_plate }}</td>
+                <!-- <td>{% for lp in user_data.license_plates %}{{ lp }}{% if not forloop.last %}, {% endif %}{% endfor %}</td> -->
+                <td><a href=""><img src="{% static 'image/icon-block.png' %}" alt=""></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+<!-- ------------Form add------------------------------ -->
+<div id="overlay" style="display: none;">
+  <form action="{% url 'add_Plate_Number' %}" method="post" id="form-add">
+      {% csrf_token %}
+      <i class="fa fa-times close-button" style="font-size: 25px; cursor: pointer;" onclick="closeForm('overlay')"></i>
+      <input type="hidden" name="id" id="id" value="{{name_user.id}}">
+        <input type="text" name="plate_number" class="text" placeholder="Biển số xe" required>
+        <button type="submit" class="button"><i class="fa fa-plus"></i> Thêm</button>
+  </form>   
+</div>
+
+<script>
+  function closeForm(id_form) {
+    document.getElementById(id_form).style.display = 'none';
+  }
+  function openForm(id_form) {
+    document.getElementById(id_form).style.display = 'block';
+  }
+</script>
+
+
+{% endblock %}
